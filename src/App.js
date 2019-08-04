@@ -1,58 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Header from './components/Header'
 import Card from './components/Card'
+import { Switch, Route } from 'react-router-dom';
+import Wall from './components/Wall'
+import NotFound from './components/notfound'
+import Dashboard from './components/Dashboard'
+import AppBar from './components/AppBar'
 
-
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  gridScroll:{
-
-  },
-  cardCustom:{
-    margin: 40,
-    padding: 40,
-    fontSize:100,
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      view: "/"
+    }
   }
-}));
 
-export default function App() {
-  const classes = useStyles();
+  navigateTo(url){
+    
+    this.setState({
+      view: url
+    })
+  }
 
-  return (
-    <div>
-      <Header/>
-      <div className={classes.root}>
-        <Grid container spacing={4}>
-          
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} container 
-              spacing={4}
-              direction="column"
-              justify="center"
-              alignItems="center">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-           
-          </Grid>
-          
-        </Grid>
+  render(){
+    return (
+      <div>
+        <AppBar/>
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route path="/wall" component={Wall} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
-    </div>
-  );
+    )
+  }
 }
+
+export default App;
