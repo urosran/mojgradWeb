@@ -1,26 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Header from './components/Header'
+import Card from './components/Card'
 
-function App() {
+
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  gridScroll:{
+
+  },
+  cardCustom:{
+    margin: 40,
+    padding: 40,
+    fontSize:100,
+  }
+}));
+
+export default function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header/>
+      <div className={classes.root}>
+        <Grid container spacing={4}>
+          
+          <Grid item xs={12} sm={6}>
+            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} container 
+              spacing={4}
+              direction="column"
+              justify="center"
+              alignItems="center">
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+           
+          </Grid>
+          
+        </Grid>
+      </div>
     </div>
   );
 }
-
-export default App;
