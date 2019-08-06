@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Wall() {
+export default function Map() {
   const classes = useStyles();
 
   return (
@@ -34,16 +34,9 @@ export default function Wall() {
       <div className={classes.root}>
         <Grid container spacing={4}>
           
-          <Grid item xs={12} sm={12} container 
-              spacing={4}
-              direction="column"
-              justify="center"
-              alignItems="center">
-            <Card/>
-            <Card/>
-            <Card/>
+         <h1>Mapa</h1>
            
-          </Grid>
+          
           
         </Grid>
       </div>

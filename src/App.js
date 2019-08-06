@@ -10,6 +10,8 @@ import Wall from './components/Wall'
 import NotFound from './components/notfound'
 import Dashboard from './components/Dashboard'
 import AppBar from './components/AppBar'
+import Institutions from './components/Institutions'
+import MapCustom from './components/Map'
 
 class App extends Component {
   constructor(props){
@@ -33,6 +35,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/wall" component={Wall} />
+          <Route path="/institutions" component={Institutions} />
+          <Route path="/map" component={MapCustom} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -26,24 +26,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Wall() {
+export default function Instiutions() {
   const classes = useStyles();
 
   return (
     <div>
       <div className={classes.root}>
         <Grid container spacing={4}>
-          
-          <Grid item xs={12} sm={12} container 
-              spacing={4}
-              direction="column"
-              justify="center"
-              alignItems="center">
-            <Card/>
-            <Card/>
-            <Card/>
-           
-          </Grid>
+        <h1>Institucije</h1>  
           
         </Grid>
       </div>
