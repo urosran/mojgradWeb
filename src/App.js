@@ -12,7 +12,7 @@ import Dashboard from './components/Dashboard'
 import AppBar from './components/AppBar'
 import Institutions from './components/Institutions'
 import MapCustom from './components/Map'
-
+import newApp from './newApp'
 class App extends Component {
   constructor(props){
     super(props);

@@ -74,7 +74,11 @@ const useStyles = makeStyles(theme => ({
       color: 'inherit'
   }
 }));
-
+var brand = (
+  <div style={{marginTop:-20}}>
+        uros
+  </div>
+);
 function ResponsiveDrawer(props) {
   const { container } = props;
   const classes = useStyles();
@@ -88,6 +92,7 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
+      {/* <Typography>Uros</Typography> */}
       <Divider />
       <List>
         <NavLink to="/" className={classes.navlink} >
@@ -123,12 +128,13 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbarCustom}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            edge="start"
+            edge="start" 
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
@@ -145,6 +151,7 @@ function ResponsiveDrawer(props) {
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
+        {brand}
           <Drawer
             container={container}
             variant="temporary"
@@ -158,11 +165,14 @@ function ResponsiveDrawer(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
+
             {drawer}
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
+          {brand}
           <Drawer
+
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -172,6 +182,7 @@ function ResponsiveDrawer(props) {
             {drawer}
           </Drawer>
         </Hidden>
+
       </nav>
       
     </div>
