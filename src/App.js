@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme, Box, Typography } from "@material-ui/core";
+import { createMuiTheme, Box } from "@material-ui/core";
 import { ChevronLeft, MenuRounded, ChevronRight } from "@material-ui/icons";
 import { Root, Header, Nav, Content, Footer } from "mui-layout";
 import Card from './components/Card'
@@ -37,7 +36,7 @@ const config = {
   "headerPosition": {
     "xs": "sticky",
     "sm": "sticky",
-    "md": "relative"
+    "md": "fixed"
   },
   "squeezed": {
     "xs": false,
@@ -54,17 +53,19 @@ const theme = createMuiTheme();
 
 export default function App() {
   return (
+    
     <ThemeProvider theme={theme}>
-      <Root config={config}>
+      <Root config={config} styles={{marginTop: 200,}}>
         <Header
           renderMenuIcon={open => (open ? <ChevronLeft /> : <MenuRounded />)}
+          
         />
         <Nav
           renderIcon={collapsed =>
             collapsed ? <ChevronRight /> : <ChevronLeft />
           }
         >
-          <Drawer></Drawer>
+          <Drawer/>
         </Nav>
         <Content>
           <Box p={{ xs: 2, sm: 3 }}>
@@ -80,6 +81,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);

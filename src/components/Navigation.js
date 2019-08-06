@@ -1,22 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { inherits } from 'util';
+import { makeStyles } from '@material-ui/core/styles';
+import { Switch, NavLink } from 'react-router-dom';
+import Map from '@material-ui/icons/Map';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import InsitutionsIcon from '@material-ui/icons/AccountBalance';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const drawerWidth=240
 
@@ -50,6 +43,10 @@ const useStyles = makeStyles(theme => ({
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    navlink:{
+        textDecoration: 'none',
+        color: 'inherit'
+    }
   }));
   
     export default function ResponsiveDrawer(props) {
@@ -62,22 +59,33 @@ const useStyles = makeStyles(theme => ({
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+        <NavLink to="/" className={classes.navlink} >
+          <ListItem button>
+            <ListItemIcon>{<DashboardIcon />}</ListItemIcon>
+            <ListItemText primary={"Pocetna"} />
+          </ListItem>
+        </NavLink>
+
+          <NavLink to="/wall" className={classes.navlink} >
+            <ListItem button>
+              <ListItemIcon>{<VisibilityIcon />}</ListItemIcon>
+              <ListItemText primary={"Zid"} />
             </ListItem>
-            ))}
-        </List>
-        <Divider />
-        <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+          </NavLink>
+          <NavLink to="/institutions" className={classes.navlink} >
+            <ListItem button>
+              <ListItemIcon>{<InsitutionsIcon />}</ListItemIcon>
+              <ListItemText primary={"Institucije"} />
             </ListItem>
-            ))}
-        </List>
+          </NavLink>
+
+          <NavLink to="/map" className={classes.navlink}>
+            <ListItem button>
+              <ListItemIcon>{<Map/>}</ListItemIcon>
+              <ListItemText primary={"Mapa"} />
+            </ListItem>
+          </NavLink>
+      </List>
         </div>
     );
     return(drawer)
