@@ -1,47 +1,83 @@
-import React, {Component} from 'react';
-import './App.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Header from './components/Header'
+import React from "react";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme, Box } from "@material-ui/core";
+import { ChevronLeft, MenuRounded, ChevronRight } from "@material-ui/icons";
+import { Root, Header, Nav, Content, Footer } from "mui-layout";
 import Card from './components/Card'
-import { Switch, Route } from 'react-router-dom';
-import Wall from './components/Wall'
-import NotFound from './components/notfound'
-import Dashboard from './components/Dashboard'
-import AppBar from './components/AppBar'
-import Institutions from './components/Institutions'
-import MapCustom from './components/Map'
-import newApp from './newApp'
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      view: "/"
-    }
+import Drawer from './components/Navigation'
+// import "./styles.css";
+const config = {
+  "navAnchor": "left",
+  "navVariant": {
+    "xs": "temporary",
+    "sm": "persistent",
+    "md": "permanent"
+  },
+  "navWidth": {
+    "xs": 240,
+    "sm": 256,
+    "md": 256
+  },
+  "collapsible": {
+    "xs": false,
+    "sm": false,
+    "md": true
+  },
+  "collapsedWidth": {
+    "xs": 64,
+    "sm": 64,
+    "md": 64
+  },
+  "clipped": {
+    "xs": false,
+    "sm": false,
+    "md": false
+  },
+  "headerPosition": {
+    "xs": "sticky",
+    "sm": "sticky",
+    "md": "fixed"
+  },
+  "squeezed": {
+    "xs": false,
+    "sm": false,
+    "md": false
+  },
+  "footerShrink": {
+    "xs": false,
+    "sm": false,
+    "md": false
   }
+};
+const theme = createMuiTheme();
 
-  navigateTo(url){
+export default function App() {
+  return (
     
-    this.setState({
-      view: url
-    })
-  }
+    <ThemeProvider theme={theme}>
+      <Root config={config} styles={{marginTop: 200,}}>
+        <Header
+          renderMenuIcon={open => (open ? <ChevronLeft /> : <MenuRounded />)}
+          
+        />
+        <Nav
+          renderIcon={collapsed =>
+            collapsed ? <ChevronRight /> : <ChevronLeft />
+          }
+        >
+          <Drawer/>
+        </Nav>
+        <Content>
+          <Box p={{ xs: 2, sm: 3 }}>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
 
-  render(){
-    return (
-      <div>
-        <AppBar/>
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path="/wall" component={Wall} />
-          <Route path="/institutions" component={Institutions} />
-          <Route path="/map" component={MapCustom} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    )
-  }
+          </Box>
+        </Content>
+        <Footer>Footer</Footer>
+      </Root>
+    </ThemeProvider>
+  );
 }
-
-export default App;
