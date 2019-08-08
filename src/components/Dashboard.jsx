@@ -10,6 +10,10 @@ import Card from './Card'
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    marginTop: 40,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center'
   },
   paper: {
     padding: theme.spacing(2),
@@ -33,17 +37,20 @@ export default function App() {
     <div>
       <div className={classes.root}>
         <Grid container spacing={4}>
-          
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          {/* <Grid item xs={12} sm={6}>
+            
           </Grid>
           <Grid item xs={12} sm={6} container 
               spacing={4}
               direction="column"
               justify="center"
               alignItems="center">
-           
-          </Grid>
+                
+          </Grid> */}
           
         </Grid>
       </div>

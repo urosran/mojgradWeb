@@ -19,7 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 450,
-    marginTop: 20,
+    marginTop: 45,
     marginLeft: 40,
   },
   media: {
@@ -54,7 +54,7 @@ export default function RecipeReviewCard() {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            UR
           </Avatar>
         }
         action={
